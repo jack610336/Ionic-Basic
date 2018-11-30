@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Assignment 2
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h1 text-center>Enter the right Code</h1>
+
+  <p text-center>{{onWin()}}</p>
+
+  <ion-list>
+    <ion-item>
+      <p>Tapped : {{countOfTap}} </p>
+    </ion-item>
+    <ion-item >
+      <p >Pressed : {{countOfPress}}</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid>
+
+    <app-reset (resetClick) = "resetFun($event)"></app-reset>
+    <ion-row>
+      <ion-col class="gestures" text-center (tap)="onTap()">
+        Tap Here
+      </ion-col>
+      <ion-col class="gestures" text-center (press)="onPress()">
+        Press Here
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>
