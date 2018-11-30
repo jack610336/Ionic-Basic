@@ -1,0 +1,87 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onShowOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Shopping List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding overflow-scroll="true">
+
+  <form #f="ngForm" (ngSubmit)="onAddItem(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input
+          type="text"
+          name="ingredientName"
+          placeholder="Milk"
+          ngModel
+          required
+          autocomplete ="on"
+          autocorrect="on"
+          clearInput
+          (keyup)="moveFocusF($event,moveA)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Amount</ion-label>
+        <ion-input
+          type="number"
+          name="amount"
+          placeholder="2"
+          ngModel
+          required
+          #moveA ></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <button
+      ion-button
+      type="submit"
+      block
+      [disabled]="!f.valid"> Add </button>
+  </form>
+
+
+
+
+    <ion-scroll scrollY="true"  style="width:100%; margin-bottom:64px;">
+      <ion-list>
+        <ion-item-sliding *ngFor="let item of listItems; let i = index" >
+          <ion-item >
+
+            {{item.name}} ({{item.amount}})
+
+          </ion-item>
+          <ion-item-options>
+            <button ion-button color="danger" (click)="onRemoveItem(i)">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+            </button>
+
+          </ion-item-options>
+        </ion-item-sliding>
+
+      </ion-list>
+
+    </ion-scroll>
+
+    <div >
+      <button ion-button > 123465</button>
+    </div>
+
+
+</ion-content>
